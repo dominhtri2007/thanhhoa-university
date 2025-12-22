@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Tra cứu hóa đơn </title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>Tra cứu hóa đơn </h1>
+  <div class="search-bar">
+    <input type="text" id="senderId" placeholder="ID nhân viên">
+    <input type="date" id="fromDate">
+    <input type="date" id="toDate">
+    <button id="statBtn">Thống kê</button>
+  </div>
+  <p id="info"></p>
+  <p id="statResult" class="stat-box"></p>
+  <div class="dashboard">
+    <div class="left">
+      <table id="invoiceTable">
+        <thead>
+          <tr>
+            <th>Người gửi</th>
+            <th>Người nhận</th>
+            <th>Số tiền</th>
+            <th>Thời gian</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
+<div class="right">
+  <div class="stats">
+    <div class="stat-card">
+      <h3 id="totalInvoices">0</h3>
+      <p>Tổng số hóa đơn</p>
+    </div>
+    <div class="stat-card">
+      <h3 id="totalRevenue">0</h3>
+      <p>Tổng doanh thu</p>
+    </div>
+  </div>
+  <div class="chart-box">
+    <h4>Doanh thu theo ngày</h4>
+    <canvas id="chartRevenue"></canvas>
+  </div>
+  <div class="chart-box">
+    <h4>Doanh thu theo tuần</h4>
+    <canvas id="chartWeekly"></canvas>
+  </div>
+</div>
+  <footer class="footer">
+    Copyright © Minh Trí
+  </footer>  
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
