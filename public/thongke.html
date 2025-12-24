@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Thống kê tổng hợp </title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="filter-box" style="
+  background:#1e1e2f;
+  padding:15px;
+  border-radius:10px;
+  margin-bottom:20px;
+">
+  <h3>🔎 Thống kê theo khoảng ngày</h3>
+
+  <label>Từ ngày:</label>
+  <input type="date" id="fromDate" style="padding:6px;border-radius:6px;margin-right:10px;">
+  
+  <label>Đến ngày:</label>
+  <input type="date" id="toDate" style="padding:6px;border-radius:6px;margin-right:10px;">
+
+  <button id="btnCheckRange" style="
+    padding:8px 15px;
+    border:none;
+    background:#3a82f7;
+    color:white;
+    border-radius:6px;
+    cursor:pointer;
+  ">Xem thống kê</button>
+
+  <div id="rangeResult" style="margin-top:15px;line-height:1.6;color:#fff;">
+  </div>
+</div>
+  <h1>Thống kê tổng hợp</h1>
+  <div class="stats">
+    <div class="stat-card">
+      <h3 id="totalInvoices">0</h3>
+      <p>Tổng số hóa đơn</p>
+    </div>
+    <div class="stat-card">
+      <h3 id="totalRevenue">0</h3>
+      <p>Tổng doanh thu (VNĐ)</p>
+    </div>
+  </div>
+  <div class="chart-box">
+    <h4> Doanh thu theo ngày</h4>
+    <canvas id="chartRevenue"></canvas>
+  </div>
+  <div class="chart-box">
+    <h4> Doanh thu theo tuần (7 ngày gần nhất)</h4>
+    <canvas id="chartWeekly"></canvas>
+  </div>
+  <div class="chart-box">
+    <h4> Lượng tin nhắn theo giờ trong ngày</h4>
+    <input type="date" id="daySelect" style="padding:6px;border-radius:6px;border:1px solid #444;background:#2a2a3c;color:#fff;">
+    <canvas id="chartHourly"></canvas>
+  </div>
+  <footer class="footer">
+    Copyright © Minh Trí
+  </footer>  
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="app.min.js"></script>
+</body>
+</html>

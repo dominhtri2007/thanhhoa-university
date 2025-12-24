@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<title>Tổng hợp quỹ</title>
+<style>
+body {
+  background: #0e0e0e;
+  color: #fff;
+  font-family: Arial;
+  padding: 30px;
+}
+h1 {
+  text-align: center;
+  margin-bottom: 30px;
+}
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 20px;
+}
+.card {
+  background: #1c1c1c;
+  border-radius: 12px;
+  padding: 20px;
+}
+.card h2 {
+  margin: 0 0 10px;
+  font-size: 20px;
+  text-transform: uppercase;
+}
+.line {
+  margin: 6px 0;
+}
+.deposit { color: #00e676; }
+.withdraw { color: #ff5252; }
+.balance { color: #40c4ff; }
+.time {
+  margin-top: 8px;
+  font-size: 12px;
+  color: #aaa;
+}
+</style>
+</head>
+<body>
+
+<h1>📊 Tổng hợp quỹ</h1>
+
+<div class="grid" id="funds"></div>
+
+<script>
+async function loadFunds() {
+  const res = await fetch("/api/funds");
+  const funds = await res.json();
+
+  const container = document.getElementById("funds");
+  container.innerHTML = "";
+
+  funds.forEach(f => {
+    const time = f.lastUpdate
+      ? new Date(f.lastUpdate).toLocaleString("vi-VN")
+      : "Chưa có dữ liệu";
+
+    container.innerHTML += `
+      <div class="card">
+        <h2>${f.key}</h2>
+        <div class="line deposit">🟢 Đã gửi: $${f.deposit.toLocaleString()}</div>
+        <div class="line withdraw">🔴 Đã rút: $${f.withdraw.toLocaleString()}</div>
+        <div class="line balance">🏦 Còn lại: $${f.balance.toLocaleString()}</div>
+        <div class="time">🕒 Cập nhật: ${time}</div>
+      </div>
+    `;
+  });
+}
+
+loadFunds();
+</script>
+
+</body>
+</html>

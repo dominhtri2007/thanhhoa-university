@@ -1,0 +1,68 @@
+{
+  "petrol36": {
+    "deposit": 0,
+    "withdraw": 5960038,
+    "balance": 3965,
+    "lastUpdate": "2025-11-12T17:07:05.796Z"
+  },
+  "quanrauma": {
+    "deposit": 4960000,
+    "withdraw": 103808244,
+    "balance": 11000000,
+    "lastUpdate": "2025-11-12T10:53:47.652Z"
+  },
+  "tacoo": {
+    "deposit": 2000000,
+    "withdraw": 91735000,
+    "balance": 3726903,
+    "lastUpdate": "2025-11-12T14:38:17.308Z"
+  },
+  "mechanic": {
+    "deposit": 27885513,
+    "withdraw": 150083953,
+    "balance": 8335673,
+    "lastUpdate": "2025-11-12T21:57:35.880Z"
+  },
+  "rongdo": {
+    "deposit": 35152000,
+    "withdraw": 60352252,
+    "balance": 261100,
+    "lastUpdate": "2025-12-09T11:18:11.588Z"
+  },
+  "khongchalimex": {
+    "deposit": 45000,
+    "withdraw": 14740154,
+    "balance": 400000,
+    "lastUpdate": "2025-12-24T18:15:21.801Z"
+  },
+  "barber": {
+    "deposit": 0,
+    "withdraw": 2472000,
+    "balance": 2998060,
+    "lastUpdate": "2025-11-25T18:52:34.864Z"
+  },
+  "cardealer": {
+    "deposit": 400000,
+    "withdraw": 6600000,
+    "balance": 5650370,
+    "lastUpdate": "2025-11-20T17:53:53.229Z"
+  },
+  "police": {
+    "deposit": 1,
+    "withdraw": 0,
+    "balance": 25694003,
+    "lastUpdate": "2025-12-11T15:16:00.317Z"
+  },
+  "ambulance": {
+    "deposit": 1,
+    "withdraw": 0,
+    "balance": 18299266,
+    "lastUpdate": "2025-11-25T09:43:36.965Z"
+  },
+  "redline": {
+    "deposit": 0,
+    "withdraw": 1000000,
+    "balance": 48822554,
+    "lastUpdate": "2025-11-19T12:08:14.019Z"
+  }
+}
