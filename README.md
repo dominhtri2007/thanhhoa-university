@@ -1,4 +1,5 @@
 
+```md
 # Discord Kill Log Panel + Action Bot 
 
 Hệ thống **Panel web + Discord Bot** dùng để:
@@ -25,7 +26,7 @@ Hệ thống **Panel web + Discord Bot** dùng để:
 
 ## 📁 Cấu trúc dự án
 
-text
+```text
 project/
 ├── server.js        # Backend + Discord Bot (1 file)
 ├── package.json
@@ -38,9 +39,9 @@ project/
 
 ## 🔐 Cấu hình `.env`
 
-env
+```env
 # ================= SERVER =================
-PORT=
+PORT=8080
 
 # ================= DISCORD =================
 DISCORD_TOKEN=            # Bot token Discord
@@ -231,5 +232,6 @@ pm2 save
 * Phân quyền nhiều admin
 
 ```
+---
 
-🛠️ Developed & maintained by **tricoder_gojosama**
+# 🛠️ Developed & maintained by **tricoder_gojosama**
