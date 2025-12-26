@@ -25,21 +25,17 @@ Hệ thống **Panel web + Discord Bot** dùng để:
 ---
 
 ## 📁 Cấu trúc dự án
-```
 
+```text
 project/
 ├── server.js        # Backend + Discord Bot (1 file)
 ├── package.json
-├── .env             ❌ KHÔNG push
+├── .env             # ❌ KHÔNG push
 ├── .gitignore
 └── public/
-├── index.html
-├── login.html
-└── script.js    # Frontend logic
-
-````
-
----
+    ├── index.html
+    ├── login.html
+    └── script.js    # Frontend logic
 
 ## 🔐 Cấu hình `.env`
 
