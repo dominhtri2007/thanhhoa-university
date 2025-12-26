@@ -183,5 +183,5 @@ socket.on("getAllInvoices", () => {
 });
 
 server.listen(process.env.PORT, () => {
-  console.log(`🚀 Web server chạy ở http://localhost:${process.env.PORT}`);
+  console.log(`http://localhost:${process.env.PORT}`);
 });
