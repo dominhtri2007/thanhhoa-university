@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <title>Login</title>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <style>
+    * {
+      box-sizing: border-box;
+      font-family: "Segoe UI", Tahoma, sans-serif;
+    }
+    body {
+      margin: 0;
+      height: 100vh;
+      background: linear-gradient(135deg, #141e30, #243b55);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+    }
+    .login-box {
+      background: rgba(0, 0, 0, 0.45);
+      padding: 35px 30px;
+      border-radius: 14px;
+      width: 340px;
+      box-shadow: 0 10px 40px rgba(0,0,0,.6);
+      text-align: center;
+      animation: fadeIn .6s ease;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .login-box h2 {
+      margin-bottom: 22px;
+      font-weight: 600;
+      letter-spacing: .5px;
+    }
+    .login-box input {
+      width: 100%;
+      padding: 12px;
+      margin: 10px 0;
+      border-radius: 8px;
+      border: none;
+      outline: none;
+      font-size: 15px;
+    }
+    .login-box input:focus {
+      box-shadow: 0 0 0 2px #00b4ff55;
+    }
+    .login-box button {
+      width: 100%;
+      padding: 12px;
+      margin-top: 15px;
+      background: linear-gradient(135deg, #00b4ff, #0084ff);
+      border: none;
+      border-radius: 8px;
+      color: #fff;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: .25s;
+    }
+    .login-box button:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 8px 20px rgba(0,180,255,.35);
+    }
+    footer {
+      margin-top: 20px;
+      font-size: 13px;
+      opacity: .7;
+    }
+  </style>
+</head>
+<body>
+  <div class="login-box">
+    <h2>Đăng nhập</h2>
+    <input id="username" placeholder="Username" autocomplete="username" />
+    <input id="password" type="password" placeholder="Password" autocomplete="current-password" />
+    <button id="loginBtn">Login</button>
+    <footer>by <b>tricoder</b></footer>
+  </div>
+  <script>
+    document.getElementById("loginBtn").onclick = async () => {
+      const username = document.getElementById("username").value.trim();
+      const password = document.getElementById("password").value;
+      if (!username || !password) {
+        Swal.fire({
+          icon: "warning",
+          title: "Thiếu thông tin",
+          text: "Vui lòng nhập đầy đủ tài khoản và mật khẩu",
+          confirmButtonColor: "#3085d6"
+        });
+        return;
+      }
+      try {
+        const res = await fetch("/login", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ username, password })
+        });
+        if (!res.ok) {
+          Swal.fire({
+            icon: "error",
+            title: "Đăng nhập thất bại",
+            text: "Sai tài khoản hoặc mật khẩu",
+            confirmButtonColor: "#d33"
+          });
+          return;
+        }
+        const data = await res.json();
+        localStorage.setItem("jwt", data.token);
+        Swal.fire({
+          icon: "success",
+          title: "Thành công",
+          text: "Đang vào hệ thống...",
+          timer: 900,
+          showConfirmButton: false
+        });
+        setTimeout(() => {
+          window.location.href = "/";
+        }, 900);
+      } catch (err) {
+        Swal.fire({
+          icon: "error",
+          title: "Lỗi hệ thống",
+          text: err.message,
+          confirmButtonColor: "#d33"
+        });
+      }
+    };
+  </script>
+</body>
+</html>

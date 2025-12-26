@@ -1,0 +1,488 @@
+/* ===== Reset ===== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Segoe UI", Arial, sans-serif;
+  background: #1e1e2f;        
+  color: #ecf0f1;               
+  padding: 20px;
+}
+
+/* ===== Header ===== */
+h2 {
+  margin-bottom: 20px;
+  font-size: 26px;
+  font-weight: 700;
+  color: #f1f1f1;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+h2::before {
+  content: "🌙";      
+  font-size: 22px;
+}
+
+/* ===== Filters ===== */
+.filters {
+  margin-bottom: 20px;
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.filters input, .filters button {
+  padding: 10px 14px;
+  border: 1px solid #444;
+  border-radius: 6px;
+  font-size: 14px;
+  background: #2c2c3a;
+  color: #ecf0f1;
+  transition: all 0.2s ease;
+}
+
+.filters input:focus {
+  border-color: #3498db;
+  outline: none;
+  box-shadow: 0 0 5px rgba(52,152,219,0.6);
+}
+
+.filters button {
+  background: #3498db;
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.filters button:hover {
+  background: #2980b9;
+}
+
+/* ===== Table ===== */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #2a2a3a;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.5);
+}
+
+th, td {
+  padding: 14px 12px;
+  text-align: left;
+  font-size: 14px;
+}
+
+th {
+  background: #33334a;
+  color: #f5f5f5;
+  font-weight: 700;
+  border-bottom: 2px solid #444;
+}
+
+td {
+  border-bottom: 1px solid #3a3a4a;
+  color: #e0e0e0;
+}
+
+tr:nth-child(even) td {
+  background: #262637;
+}
+
+tr:hover td {
+  background: #34344d;
+}
+
+/* ===== Penalty button ===== */
+.penaltyBtn {
+  padding: 7px 14px;
+  background: #e74c3c;
+  border: none;
+  border-radius: 6px;
+  color: white;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.penaltyBtn:hover {
+  background: #c0392b;
+}
+
+/* ===== Modal ===== */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0,0,0,0.7);
+  animation: fadeIn 0.3s;
+}
+
+.modal-content {
+  background: #2c2c3a;
+  margin: 5% auto;
+  padding: 20px 25px;
+  border-radius: 10px;
+  width: 480px;
+  box-shadow: 0 5px 18px rgba(0,0,0,0.6);
+  animation: slideIn 0.3s;
+  color: #f5f5f5;
+}
+
+.close {
+  float: right;
+  font-size: 24px;
+  cursor: pointer;
+  color: #bbb;
+  transition: 0.2s;
+}
+
+.close:hover {
+  color: #fff;
+}
+
+/* ===== Form ===== */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-top: 10px;
+}
+
+label {
+  font-weight: 600;
+  font-size: 14px;
+  margin-bottom: 2px;
+  color: #e0e0e0;
+}
+
+input, select {
+  padding: 9px 12px;
+  border: 1px solid #444;
+  border-radius: 6px;
+  font-size: 14px;
+  width: 100%;
+  background: #1f1f2f;
+  color: #f1f1f1;
+  transition: all 0.2s ease;
+}
+
+input:focus, select:focus {
+  border-color: #3498db;
+  outline: none;
+  box-shadow: 0 0 5px rgba(52,152,219,0.5);
+}
+
+button[type="submit"] {
+  padding: 12px;
+  border: none;
+  border-radius: 6px;
+  background: #27ae60;
+  color: white;
+  font-weight: 600;
+  font-size: 15px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+button[type="submit"]:hover {
+  background: #1e8449;
+}
+
+/* ===== Preview ===== */
+.preview {
+  margin-top: 12px;
+  padding: 12px;
+  border-radius: 6px;
+  border: 1px solid #444;
+  background: #1f1f2f;
+  font-family: Consolas, monospace;
+  font-size: 13px;
+  white-space: pre-wrap;
+  color: #e6e6e6;
+}
+
+.filters input {
+  width: auto;
+  min-width: 180px;  /* ID */
+}
+/* ===== Popup chọn hành động ===== */
+#actionSelectModal .modal-content {
+  background: #2c2c3a;
+  width: 380px;
+  margin: 10% auto;
+  padding: 20px 25px;
+  border-radius: 12px;
+  box-shadow: 0 5px 18px rgba(0,0,0,0.6);
+  animation: fadeIn 0.25s ease-out;
+  color: #f5f5f5;
+  text-align: center;
+}
+
+#actionSelectModal h3 {
+  font-size: 20px;
+  margin-bottom: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+#actionSelectModal p {
+  font-size: 14px;
+  color: #ddd;
+  margin-bottom: 20px;
+}
+
+/* Close button */
+.closeActionSelect {
+  float: right;
+  font-size: 24px;
+  cursor: pointer;
+  color: #bbb;
+  transition: 0.2s;
+}
+
+.closeActionSelect:hover {
+  color: #fff;
+}
+
+/* Buttons layout */
+#actionSelectModal button {
+  width: 100%;
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+  margin-top: 10px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+/* Teleport */
+#selectTeleport {
+  background: #3498db;
+  color: white;
+}
+#selectTeleport:hover {
+  background: #2980b9;
+}
+
+/* Revive */
+#selectRevive {
+  background: #27ae60;
+  color: white;
+}
+#selectRevive:hover {
+  background: #1e8449;
+}
+
+/* Penalty */
+#selectPenalty {
+  background: #e67e22;
+  color: white;
+}
+#selectPenalty:hover {
+  background: #ca6a13;
+}
+
+/* Popup animation */
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.97); }
+  to { opacity: 1; transform: scale(1); }
+}
+/* ===== Modal xử phạt ===== */
+#penaltyModal .modal-content {
+  background: #2c2c3a;
+  width: 480px;
+  margin: 5% auto;
+  padding: 20px 25px;
+  border-radius: 12px;
+  box-shadow: 0 5px 18px rgba(0,0,0,0.6);
+  animation: fadeIn 0.25s ease-out;
+  color: #f5f5f5;
+}
+
+#penaltyModal h3 {
+  font-size: 22px;
+  margin-bottom: 15px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Nút đóng */
+#penaltyModal .close {
+  float: right;
+  font-size: 24px;
+  cursor: pointer;
+  color: #bbb;
+  transition: 0.2s;
+}
+#penaltyModal .close:hover {
+  color: white;
+}
+
+/* Label */
+#penaltyModal label {
+  display: block;
+  margin-top: 10px;
+  margin-bottom: 4px;
+  font-size: 14px;
+  color: #ddd;
+}
+
+/* Input + Select */
+#penaltyModal input,
+#penaltyModal select {
+  width: 100%;
+  padding: 10px 14px;
+  border-radius: 6px;
+  border: 1px solid #444;
+  background: #1f1f2f;
+  color: #f1f1f1;
+  font-size: 14px;
+  transition: 0.2s;
+}
+
+#penaltyModal input:focus,
+#penaltyModal select:focus {
+  border-color: #3498db;
+  box-shadow: 0 0 5px rgba(52,152,219,0.5);
+  outline: none;
+}
+
+/* Nút gửi */
+#penaltyModal button[type="submit"] {
+  width: 100%;
+  padding: 12px;
+  margin-top: 15px;
+  background: #27ae60;
+  border: none;
+  border-radius: 6px;
+  color: white;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.25s;
+}
+#penaltyModal button[type="submit"]:hover {
+  background: #1e8449;
+}
+
+/* Preview */
+#penaltyModal .preview {
+  margin-top: 12px;
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid #444;
+  background: #1f1f2f;
+  font-family: Consolas, monospace;
+  font-size: 13px;
+  white-space: pre-wrap;
+  color: #e6e6e6;
+}
+
+/* Status message */
+#penaltyModal #penaltyStatus {
+  margin-top: 10px;
+  color: #ccc;
+  font-size: 13px;
+}
+
+/* Fade animation */
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.97); }
+  to { opacity: 1; transform: scale(1); }
+}
+/* ===== Nút Hành động trong bảng ===== */
+.actionBtn {
+  padding: 7px 14px;
+  background: #3498db; /* màu xanh nhẹ */
+  border: none;
+  border-radius: 6px;
+  color: white;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.actionBtn:hover {
+  background: #2980b9;
+}
+/* ===== Popup Teleport & Revive ===== */
+#teleportModal .modal-content,
+#reviveModal .modal-content {
+  background: #2c2c3a;
+  width: 380px;
+  margin: 10% auto;
+  padding: 20px 25px;
+  border-radius: 12px;
+  box-shadow: 0 5px 18px rgba(0,0,0,0.6);
+  animation: fadeIn 0.25s ease-out;
+  color: #f5f5f5;
+  text-align: center;
+}
+
+#teleportModal h3,
+#reviveModal h3 {
+  font-size: 20px;
+  margin-bottom: 15px;
+}
+
+.closeTeleport,
+.closeRevive {
+  float: right;
+  font-size: 22px;
+  cursor: pointer;
+  color: #bbb;
+}
+
+.closeTeleport:hover,
+.closeRevive:hover {
+  color: white;
+}
+
+#teleportModal select {
+  width: 100%;
+  padding: 10px;
+  margin-top: 8px;
+  border-radius: 6px;
+  background: #1f1f2f;
+  border: 1px solid #444;
+  color: white;
+}
+
+#sendTeleportBtn,
+#sendReviveBtn {
+  width: 100%;
+  padding: 12px;
+  margin-top: 15px;
+  border-radius: 6px;
+  border: none;
+  background: #3498db;
+  color: white;
+  cursor: pointer;
+  font-size: 15px;
+}
+
+#sendTeleportBtn:hover,
+#sendReviveBtn:hover {
+  opacity: 0.8;
+}

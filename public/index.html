@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Admin Panel</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</head>
+<body>
+
+<!-- Kill Log -->
+<div class="left">
+  <h2>Admin Panel</h2>
+
+  <div class="filters">
+    <input type="text" id="victimId" placeholder="ID nạn nhân">
+    <input type="text" id="killerId" placeholder="ID người gây ra">
+    <input type="number" id="filterDay" placeholder="Ngày" min="1" max="31" style="width:70px;">
+    <input type="text" id="filterMonthYear" placeholder="MM/YYYY" style="width:90px;">
+    <input type="text" id="filterTime" placeholder="Giờ (HHmm)">
+    <input type="number" id="filterOffset" placeholder="± phút" style="width:80px;">
+    <button onclick="clearFilter()">Clear</button>
+  </div>
+
+  <div id="logCount" style="margin: 10px 0; font-weight: 500; color:#555;"></div>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Người gây ra</th>
+        <th>Vũ khí</th>
+        <th>Nạn nhân</th>
+        <th>Khoảng cách</th>
+        <th>Thời gian</th>
+        <th>Xử phạt</th>
+      </tr>
+    </thead>
+    <tbody id="logTable"></tbody>
+  </table>
+</div>
+<div id="penaltyModal" class="modal">
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <h3>⚖️ Xử phạt</h3>
+
+    <form id="penaltyForm">
+      <label>Chọn mẫu:</label>
+      <select id="penaltyTemplate">
+        <option value="1">⛔ Xử phạt theo tố cáo</option>
+        <option value="2">⛔ Xử phạt</option>
+      </select>
+
+      <label>Chọn tài khoản Discord:</label>
+      <select id="penaltyAccount">
+        <option value="acc1">BOT</option>
+      </select>
+
+      <label>Công dân (ID):</label>
+      <input type="text" id="penaltyCitizenId" required>
+
+      <div id="penaltyPostField">
+        <label>Bài tố cáo:</label>
+        <input type="text" id="penaltyPost">
+      </div>
+
+      <div id="penaltyReasonField">
+        <label>Lý do:</label>
+        <input type="text" id="penaltyReason">
+      </div>
+
+      <div id="penaltyPunishmentField">
+        <label>Án phạt:</label>
+        <input type="text" id="penaltyPunishment">
+      </div>
+
+      <button type="submit">Gửi vào Discord</button>
+    </form>
+
+    <h4>Preview:</h4>
+    <div class="preview" id="penaltyPreview"></div>
+    <p id="penaltyStatus"></p>
+  </div>
+</div>
+<div id="actionSelectModal" class="modal">
+  <div class="modal-content">
+    <span class="closeActionSelect">&times;</span>
+    <h3>🛠️ Chọn hành động</h3>
+
+    <p>ID người chơi: <b id="selectedActionUserId"></b></p>
+
+    <button id="selectTeleport">Teleport</button>
+    <button id="selectRevive" style="background:#27ae60;">Hồi Sinh</button>
+    <button id="selectPenalty" style="background:#e67e22;">Xử phạt</button>
+  </div>
+</div>
+<div id="teleportModal" class="modal">
+  <div class="modal-content">
+    <span class="closeTeleport">&times;</span>
+    <h3>Teleport</h3>
+
+    <p>ID: <b id="teleportUserId"></b></p>
+
+    <label>Chọn vị trí:</label>
+    <select id="teleportLocation">
+      <option value="tx1">TX1</option>
+      <option value="tx2">TX2</option>
+      <option value="lan">Lặn</option>
+    </select>
+
+    <button id="sendTeleportBtn">Gửi Teleport</button>
+    <p id="teleportStatus"></p>
+  </div>
+</div>
+<div id="reviveModal" class="modal">
+  <div class="modal-content">
+    <span class="closeRevive">&times;</span>
+    <h3>Hồi Sinh</h3>
+
+    <p>ID: <b id="reviveUserId"></b></p>
+
+    <button id="sendReviveBtn" style="background:#27ae60;">Xác Nhận</button>
+    <p id="reviveStatus"></p>
+  </div>
+</div>
+
+<script src="/socket.io/socket.io.js"></script>
+<script src="script.js"></script>
+
+</body>
+</html>
