@@ -1,13 +1,4 @@
 require('dotenv').config();
-const mysql = require("mysql2/promise");
-const db = mysql.createPool({
-  host: process.env.DB_HOST || "127.0.0.1",
-  user: process.env.DB_USER || "root",
-  password: process.env.DB_PASS || "",
-  database: process.env.DB_NAME || "panel_logs",
-  waitForConnections: true,
-  connectionLimit: 10
-});
 const express = require('express');
 const cors = require('cors');
 const path = require('path');
