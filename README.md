@@ -232,6 +232,4 @@ pm2 save
 * Phân quyền nhiều admin
 
 ```
----
-
 # 🛠️ Developed & maintained by **tricoder_gojosama**
